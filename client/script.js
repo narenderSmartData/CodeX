@@ -61,8 +61,14 @@ const handleSubmit = async (e) =>{
   e.preventDefault();
   const data = new FormData(form);
   
+  const prompData = data.get('prompt').trim();
+  if(!prompData)
+    {
+      alert('Please enter some text');
+      return;
+    }
   // user's chatstripe
-  chatContainer.innerHTML += chatStripe(false, data.get('prompt'))
+  chatContainer.innerHTML += chatStripe(false, data.get('prompt').trim())
 
   form.reset();
 
